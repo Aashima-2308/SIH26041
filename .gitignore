@@ -1,0 +1,26 @@
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+MemoryCaptures/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# React / Node
+node_modules/
+dist/
+
+# Environment / secrets
+.env
+
+# General
+*.log
+.DS_Store
