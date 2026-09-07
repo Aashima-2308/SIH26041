@@ -1297,6 +1297,7 @@ GameObject:
   - component: {fileID: 1367100547}
   - component: {fileID: 1367100546}
   - component: {fileID: 1367100545}
+  - component: {fileID: 1367100548}
   m_Layer: 5
   m_Name: SandalsButton
   m_TagString: Untagged
@@ -1367,7 +1368,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1367100546}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1367100548}
+        m_TargetAssemblyTypeName: PPEButton, Assembly-CSharp
+        m_MethodName: SelectPPE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1367100546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,6 +1419,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367100543}
   m_CullTransparentMesh: 1
+--- !u!114 &1367100548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367100543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d9ab516ee574732b404cbb8537471e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PPEButton
+  instructionText: {fileID: 1439354616}
+  isCorrect: 0
 --- !u!1 &1402412833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2043,7 @@ GameObject:
   - component: {fileID: 1652291927}
   - component: {fileID: 1652291926}
   - component: {fileID: 1652291925}
+  - component: {fileID: 1652291928}
   m_Layer: 5
   m_Name: SunglassesButton
   m_TagString: Untagged
@@ -2086,7 +2114,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652291926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1652291928}
+        m_TargetAssemblyTypeName: PPEButton, Assembly-CSharp
+        m_MethodName: SelectPPE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1652291926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,6 +2165,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652291923}
   m_CullTransparentMesh: 1
+--- !u!114 &1652291928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652291923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d9ab516ee574732b404cbb8537471e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PPEButton
+  instructionText: {fileID: 1439354616}
+  isCorrect: 0
 --- !u!1 &1981840280
 GameObject:
   m_ObjectHideFlags: 0
