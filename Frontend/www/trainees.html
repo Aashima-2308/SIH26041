@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ARmour – Trainees Management</title>
+
+  <!-- Google Fonts: Inter, JetBrains Mono, Work Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Work+Sans:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface":                    "#f8f9ff",
+            "surface-bright":             "#f8f9ff",
+            "surface-dim":                "#ccdbf4",
+            "surface-variant":            "#d5e3fd",
+            "surface-container-lowest":   "#ffffff",
+            "surface-container-low":      "#eff4ff",
+            "surface-container":          "#e6eeff",
+            "surface-container-high":     "#dde9ff",
+            "surface-container-highest":  "#d5e3fd",
+            "background":                 "#f8f9ff",
+            "on-surface":                 "#0d1c2f",
+            "on-surface-variant":         "#45464d",
+            "on-background":              "#0d1c2f",
+            "primary":                    "#000000",
+            "on-primary":                 "#ffffff",
+            "primary-container":          "#131b2e",
+            "on-primary-container":       "#7c839b",
+            "primary-fixed":              "#dae2fd",
+            "primary-fixed-dim":          "#bec6e0",
+            "inverse-primary":            "#bec6e0",
+            "on-primary-fixed":           "#131b2e",
+            "on-primary-fixed-variant":   "#3f465c",
+            "secondary":                  "#904d00",
+            "on-secondary":               "#ffffff",
+            "secondary-container":        "#fe932c",
+            "on-secondary-container":     "#663500",
+            "secondary-fixed":            "#ffdcc3",
+            "secondary-fixed-dim":        "#ffb77d",
+            "on-secondary-fixed":         "#2f1500",
+            "on-secondary-fixed-variant": "#6e3900",
+            "tertiary":                   "#000000",
+            "on-tertiary":                "#ffffff",
+            "tertiary-container":         "#002114",
+            "on-tertiary-container":      "#069669",
+            "tertiary-fixed":             "#85f8c4",
+            "tertiary-fixed-dim":         "#68dba9",
+            "on-tertiary-fixed":          "#002114",
+            "on-tertiary-fixed-variant":  "#005137",
+            "error":                      "#ba1a1a",
+            "on-error":                   "#ffffff",
+            "error-container":            "#ffdad6",
+            "on-error-container":         "#93000a",
+            "outline":                    "#76777d",
+            "outline-variant":            "#c6c6cd",
+            "inverse-surface":            "#233144",
+            "inverse-on-surface":         "#ebf1ff",
+            "surface-tint":               "#565e74",
+          },
+          fontFamily: {
+            sans:    ["Inter", "sans-serif"],
+            mono:    ["JetBrains Mono", "monospace"],
+            display: ["Work Sans", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: none;
+    }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 16px); }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body class="bg-surface font-sans text-on-surface min-h-screen flex flex-col">
+
+  <!-- Fixed Top Header -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md shadow-sm border-b border-surface-container">
+    <div class="h-16 px-4 max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <a href="admin_dashboard.html" aria-label="Return to Dashboard" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+        </a>
+        <img alt="ARmour Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4aRvzHNbx4HK8xZC9LILWS6OAs0tm7BhMPo8P1il5xIjpCUcRxzqc6rcHj8VjSXfP-mcYZaETAmeE9gT8zRLgN-u0pj-WqJoiDaPXZpzWxPA4d9StD6PBYW4Lij77zVRDwV_Br9p2y3DeI_heyG071hcTAHsS0ypbQ8yqLwADzbpCLDlESXLCY8EGobJDQ1bUMql8hy80t9oQ41JzizxXQrA0rRa7BfQyXF5hw-kwGKNLrU2g6X9VU0JYw-FNOM6RAKo">
+        <span class="bg-secondary-container text-on-secondary-container font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase" data-i18n="adminDash.badge">ADMIN</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="hidden xs:flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-[11px] font-mono font-bold">
+          <span class="material-symbols-outlined text-[14px] text-secondary">shield</span>
+          <span>JH-MINING-SEC</span>
+        </div>
+        <a href="admin_profile_settings.html" aria-label="Admin Profile" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+          <span class="material-symbols-outlined text-[18px]">person</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Content -->
+  <main class="flex-1 flex flex-col pt-20 pb-28 w-full max-w-md mx-auto px-4 gap-4">
+    
+    <!-- Title & Subtitle -->
+    <div class="flex flex-col pt-1">
+      <h1 class="font-display text-2xl font-bold text-on-surface" data-i18n="trainees.title">Trainees</h1>
+      <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="trainees.subtitle">Registered participants &amp; progress</p>
+    </div>
+
+    <!-- Telemetry Summary Counter Strip -->
+    <div class="grid grid-cols-3 gap-2">
+      <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container shadow-sm flex flex-col justify-between">
+        <span class="text-[10px] font-mono uppercase font-bold text-on-surface-variant" data-i18n="trainees.enrolled">Enrolled</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <span id="trainees-enrolled-count" class="font-mono text-xl font-bold text-on-surface">0</span>
+          <span class="material-symbols-outlined text-[16px] text-on-surface-variant">groups</span>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container shadow-sm flex flex-col justify-between">
+        <span class="text-[10px] font-mono uppercase font-bold text-on-tertiary-container" data-i18n="trainees.certified">Certified</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <span id="trainees-certified-count" class="font-mono text-xl font-bold text-on-tertiary-container">0</span>
+          <span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container shadow-sm flex flex-col justify-between">
+        <span class="text-[10px] font-mono uppercase font-bold text-error" data-i18n="trainees.actionReq">Action Req</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <span class="font-mono text-xl font-bold text-error">12</span>
+          <span class="material-symbols-outlined text-[16px] text-error">warning</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar & Add Button -->
+    <div class="flex items-center gap-2">
+      <div class="relative flex-1 min-w-0">
+        <span class="material-symbols-outlined absolute left-3 inset-y-0 my-auto text-[20px] text-on-surface-variant pointer-events-none flex items-center">
+          search
+        </span>
+        <input 
+          id="trainee-search-input" 
+          type="text" 
+          data-i18n-placeholder="trainees.searchPlaceholder"
+          placeholder="Search trainee name or ID..." 
+          class="w-full h-11 pl-10 pr-3 bg-surface-container-lowest border border-surface-container text-sm rounded-xl focus:outline-none focus:bg-surface-container-low transition-colors"
+        >
+      </div>
+      <button onclick="window.location.href='worker_registration.html'" class="h-11 px-3 bg-primary text-on-primary rounded-xl flex items-center justify-center gap-1 shadow-sm font-semibold text-xs active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-[18px]">person_add</span>
+        <span data-i18n="common.add">Add</span>
+      </button>
+    </div>
+
+    <!-- Trainee Cards List -->
+    <div id="trainee-list" class="flex flex-col gap-3">
+      
+      <!-- Card 1: Manoj Soren -->
+      <a href="trainee_detail_profile.html" class="trainee-card bg-surface-container-lowest rounded-2xl border border-surface-container shadow-sm p-4 flex flex-col gap-3 hover:border-secondary-container transition-all" data-name="Manoj Soren" data-id="JH-MN-4029">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex items-center gap-3 min-w-0">
+            <img class="w-12 h-12 rounded-xl object-cover bg-surface-container-highest shrink-0" alt="Manoj Soren" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaAfJnOZ2AJUoHTfNHP-Aqs38yKmMJ2nOoaotkRp1_BpoLMMJCBWzQ6utkJMklPRjv4YqPY1XW8Qu1hcWaIJGAEbzoWVBw3g_pWHpQkwLgqUUazEmMjmZH6HNV5Nsyo1HqR9Mtvr8gvGZpzz0wpwC8I2qfDGiItdqYzHic8mur3kbvACQ0nq1w4P7XgPepOvQzGKvCeV_SyDMi8J1Q1FIMcbgRItulwElFb3LETAN45nsucU_mII5WtQ">
+            <div class="flex flex-col min-w-0">
+              <span class="font-bold text-sm text-on-surface truncate">Manoj Soren</span>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-mono text-xs text-on-surface-variant font-semibold">JH-MN-4029</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+                <span class="text-[10px] font-mono uppercase bg-surface-container px-1 rounded text-on-surface-variant">Santali</span>
+              </div>
+            </div>
+          </div>
+          <div class="shrink-0 flex items-center gap-1 px-2.5 py-1 bg-surface-container text-on-tertiary-container rounded-lg font-mono text-[10px] font-bold uppercase">
+            <span class="material-symbols-outlined text-[13px]">check_circle</span>
+            <span data-i18n="status.certified">Certified</span>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-2.5 rounded-xl grid grid-cols-3 gap-2 text-center">
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.avgScore">Avg Score</span>
+            <span class="font-mono text-xs font-bold text-on-tertiary-container mt-0.5">92.0%</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.certificates">Certificates</span>
+            <span class="font-mono text-xs font-bold text-on-surface mt-0.5">2/2</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.lastActive">Last Active</span>
+            <span class="font-mono text-xs text-on-surface-variant mt-0.5">Today 09:14</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Amit Kumar Mahto -->
+      <a href="trainee_detail_profile.html" class="trainee-card bg-surface-container-lowest rounded-2xl border border-error-container shadow-sm p-4 flex flex-col gap-3 hover:border-error transition-all" data-name="Amit Kumar Mahto" data-id="JH-BK-1102">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex items-center gap-3 min-w-0">
+            <img class="w-12 h-12 rounded-xl object-cover bg-surface-container-highest shrink-0" alt="Amit Kumar Mahto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0YbOBj6BfbL7yFGADSPnRN7ahAvYw20TWRCQcz1pTCiOT6xG8rdz6XkCb3B3_wc7C-PeateB1y5BNwVPzMa9bFaoCZdqdBhiXLLga1tS7c6-iKoJiCeN7FpitFR4ZDDpm5CbYBWjoDCa_I_pDI0LA9oBQNbVIdSzr5RDyVv6LjYkR1v9FyFp5jAsP7kE0MYNBEVJBIerEBoL1D6lMGdDwb5u9m6VTwRADjCG8LLRbXk3jVyNM0Fm5eA">
+            <div class="flex flex-col min-w-0">
+              <span class="font-bold text-sm text-on-surface truncate">Amit Kumar Mahto</span>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-mono text-xs text-on-surface-variant font-semibold">JH-BK-1102</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+                <span class="text-[10px] font-mono uppercase bg-surface-container px-1 rounded text-on-surface-variant">Hindi</span>
+              </div>
+            </div>
+          </div>
+          <div class="shrink-0 flex items-center gap-1 px-2.5 py-1 bg-error-container text-on-error-container rounded-lg font-mono text-[10px] font-bold uppercase">
+            <span class="material-symbols-outlined text-[13px]">warning</span>
+            <span data-i18n="status.reassess">Re-Assess</span>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-2.5 rounded-xl grid grid-cols-3 gap-2 text-center">
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.avgScore">Avg Score</span>
+            <span class="font-mono text-xs font-bold text-error mt-0.5">58.0%</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.certificates">Certificates</span>
+            <span class="font-mono text-xs font-bold text-error mt-0.5">None</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.lastActive">Last Active</span>
+            <span class="font-mono text-xs text-on-surface-variant mt-0.5">Today 07:45</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: Sunita Hansda -->
+      <a href="trainee_detail_profile.html" class="trainee-card bg-surface-container-lowest rounded-2xl border border-surface-container shadow-sm p-4 flex flex-col gap-3 hover:border-secondary-container transition-all" data-name="Sunita Hansda" data-id="JH-DH-8821">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex items-center gap-3 min-w-0">
+            <img class="w-12 h-12 rounded-xl object-cover bg-surface-container-highest shrink-0" alt="Sunita Hansda" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUQ6odLhuA_d7A2NDzeEt54syOAsc1MsbOhcjC8ohlJt6Mm9DachXDVvWsjOkHrgr4nkvqfnLz3JN9swFVQ0KAuCFFVlbZlliOKw32bESew_7oQtdd3BrXnhS-XEzN_Ay19-Acy2t2BCsNHCilMCrM8LbI_VQad1qtRgs_LxHXpW4X3e4zUAI_GS5sB0fGERBdx6xTpd_omMoZmegLCOJ2qrw0EAFO04kAXZH3RfUVvbVfaFPGD2pwHg">
+            <div class="flex flex-col min-w-0">
+              <span class="font-bold text-sm text-on-surface truncate">Sunita Hansda</span>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-mono text-xs text-on-surface-variant font-semibold">JH-DH-8821</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+                <span class="text-[10px] font-mono uppercase bg-surface-container px-1 rounded text-on-surface-variant">Santali</span>
+              </div>
+            </div>
+          </div>
+          <div class="shrink-0 flex items-center gap-1 px-2.5 py-1 bg-surface-container text-on-tertiary-container rounded-lg font-mono text-[10px] font-bold uppercase">
+            <span class="material-symbols-outlined text-[13px]">check_circle</span>
+            <span data-i18n="status.certified">Certified</span>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-2.5 rounded-xl grid grid-cols-3 gap-2 text-center">
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.avgScore">Avg Score</span>
+            <span class="font-mono text-xs font-bold text-on-tertiary-container mt-0.5">76.0%</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.certificates">Certificates</span>
+            <span class="font-mono text-xs font-bold text-on-surface mt-0.5">2/2</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.lastActive">Last Active</span>
+            <span class="font-mono text-xs text-on-surface-variant mt-0.5">Yesterday</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: Ramesh Tirkey -->
+      <a href="trainee_detail_profile.html" class="trainee-card bg-surface-container-lowest rounded-2xl border border-surface-container shadow-sm p-4 flex flex-col gap-3 hover:border-secondary-container transition-all" data-name="Ramesh Tirkey" data-id="JH-RN-5541">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex items-center gap-3 min-w-0">
+            <img class="w-12 h-12 rounded-xl object-cover bg-surface-container-highest shrink-0" alt="Ramesh Tirkey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD--t7bcA2FCZxBZME05wyVt7jX7m94q8CsgBJiMQTBvvLbmlN6iK1FVyEoJ0WPT1VG8_0kKrp5YIugpw_Xf-Q5DvBlbl2uMjTBEPN3nuyYyc89XzowsPqq2QNIegQ1ScMr6gBE3NRjibTi10CmWils_2SWqktvwN4xR7aLrPPy0jWittv9Ey1LYZ0cAJvRUqyCngtJjOEcZubFb5b7ty11XaVc9eavzCGXRCl1B_ORgByzI2aQ6Qyj6Q">
+            <div class="flex flex-col min-w-0">
+              <span class="font-bold text-sm text-on-surface truncate">Ramesh Tirkey</span>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span class="font-mono text-xs text-on-surface-variant font-semibold">JH-RN-5541</span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+                <span class="text-[10px] font-mono uppercase bg-surface-container px-1 rounded text-on-surface-variant">Hindi</span>
+              </div>
+            </div>
+          </div>
+          <div class="shrink-0 flex items-center gap-1 px-2.5 py-1 bg-surface-container-highest text-primary-container rounded-lg font-mono text-[10px] font-bold uppercase">
+            <span class="material-symbols-outlined text-[13px]">schedule</span>
+            <span data-i18n="trainees.inTraining">In Training</span>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-2.5 rounded-xl grid grid-cols-3 gap-2 text-center">
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.avgScore">Avg Score</span>
+            <span class="font-mono text-xs font-bold text-on-surface mt-0.5">64.0%</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.certificates">Certificates</span>
+            <span class="font-mono text-xs font-bold text-on-surface-variant mt-0.5">1/2</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-on-surface-variant uppercase" data-i18n="trainees.lastActive">Last Active</span>
+            <span class="font-mono text-xs text-on-surface-variant mt-0.5">2 days ago</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Pagination marker -->
+    <div class="py-2 flex flex-col items-center justify-center gap-1 text-on-surface-variant">
+      <span class="font-mono text-xs">Showing 4 of 1,248 participants</span>
+      <button onclick="alert('All mock trainee records currently displayed.')" class="h-10 px-4 mt-1 bg-surface-container-low text-on-surface font-semibold text-xs rounded-xl border border-surface-container active:scale-95 transition-all" data-i18n="trainees.loadMore">
+        Load More Records
+      </button>
+    </div>
+  </main>
+
+  <!-- Admin 4-Tab Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 inset-x-0 z-40 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl border-t border-surface-container shadow-lg">
+    <div class="flex justify-around items-center h-16 max-w-md mx-auto px-2">
+      <!-- Tab 1: Dashboard -->
+      <a href="admin_dashboard.html" class="flex flex-col items-center justify-center w-20 text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[24px]">dashboard</span>
+        <span class="text-[11px] font-mono uppercase tracking-tight mt-0.5" data-i18n="nav.dashboard">Dashboard</span>
+      </a>
+      <!-- Tab 2: Trainees (Active) -->
+      <a href="trainees.html" class="flex flex-col items-center justify-center w-20 text-primary font-bold">
+        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">group</span>
+        <span class="text-[11px] font-mono uppercase tracking-tight mt-0.5" data-i18n="nav.trainees">Trainees</span>
+      </a>
+      <!-- Tab 3: Modules -->
+      <a href="modules.html" class="flex flex-col items-center justify-center w-20 text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[24px]">view_in_ar</span>
+        <span class="text-[11px] font-mono uppercase tracking-tight mt-0.5" data-i18n="nav.modules">Modules</span>
+      </a>
+      <!-- Tab 4: Certs -->
+      <a href="certificates.html" class="flex flex-col items-center justify-center w-20 text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[24px]">verified</span>
+        <span class="text-[11px] font-mono uppercase tracking-tight mt-0.5" data-i18n="nav.certs">Certs</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="i18n.js"></script>
+  <script>
+
+     async function loadAdminStats() {
+    try {
+      const response = await fetch(
+        'https://armour-backend-e4lj.onrender.com/admin/compliance-stats'
+      );
+
+      const data = await response.json();
+
+      console.log('ADMIN STATS:', data);
+
+      if (!response.ok) {
+        throw new Error(data.detail || 'Failed to load admin stats');
+      }
+
+      // Enrolled
+      const enrolledCount =
+        document.getElementById('trainees-enrolled-count');
+
+      if (enrolledCount) {
+        enrolledCount.textContent = data.total_workers ?? 0;
+      }
+
+      // Certified
+      const certifiedCount =
+        document.getElementById('trainees-certified-count');
+
+      if (certifiedCount) {
+        certifiedCount.textContent =
+          data.total_certificates_issued ?? 0;
+      }
+
+    } catch (error) {
+      console.error('Admin stats error:', error);
+    }
+  }
+
+  loadAdminStats();
+
+  
+    // Live Search Filter
+    const searchInput = document.getElementById('trainee-search-input');
+    const traineeCards = document.querySelectorAll('.trainee-card');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        traineeCards.forEach(card => {
+          const name = (card.dataset.name || '').toLowerCase();
+          const id = (card.dataset.id || '').toLowerCase();
+          if (name.includes(query) || id.includes(query)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

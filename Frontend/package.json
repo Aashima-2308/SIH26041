@@ -1,0 +1,26 @@
+{
+  "name": "new-folder",
+  "version": "1.0.0",
+  "description": "Mobile-first frontend for the **ARmour** vocational industrial safety training Android application.   Built with clean, beginner-friendly HTML5, Tailwind CSS (via CDN), and Vanilla JavaScript.",
+  "main": "i18n.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aashima-2308/ARmour-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Aashima-2308/ARmour-front/issues"
+  },
+  "homepage": "https://github.com/Aashima-2308/ARmour-front#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
+  }
+}
